@@ -1,0 +1,116 @@
+/* 1 */
+{
+    "_id" : ObjectId("5ad8d0673a9641105415fa1a"),
+    "nome" : "Tatooine",
+    "clima" : "arid",
+    "terreno" : "desert",
+    "apariacoes" : 5
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5ad8d06a3a9641105415fa1b"),
+    "nome" : "Alderaan",
+    "clima" : "temperate",
+    "terreno" : "grasslands, mountains",
+    "apariacoes" : 2
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5ad8d06c3a9641105415fa1c"),
+    "nome" : "Yavin IV",
+    "clima" : "temperate, tropical",
+    "terreno" : "jungle, rainforests",
+    "apariacoes" : 1
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5ad8d06e3a9641105415fa1d"),
+    "nome" : "Hoth",
+    "clima" : "frozen",
+    "terreno" : "tundra, ice caves, mountain ranges",
+    "apariacoes" : 1
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("5ad8d0713a9641105415fa1e"),
+    "nome" : "Dagobah",
+    "clima" : "murky",
+    "terreno" : "swamp, jungles",
+    "apariacoes" : 3
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("5ad8d0733a9641105415fa1f"),
+    "nome" : "Bespin",
+    "clima" : "temperate",
+    "terreno" : "gas giant",
+    "apariacoes" : 1
+}
+
+/* 7 */
+{
+    "_id" : ObjectId("5ad8d0753a9641105415fa20"),
+    "nome" : "Endor",
+    "clima" : "temperate",
+    "terreno" : "forests, mountains, lakes",
+    "apariacoes" : 1
+}
+
+/* 8 */
+{
+    "_id" : ObjectId("5ad8d0773a9641105415fa21"),
+    "nome" : "Naboo",
+    "clima" : "temperate",
+    "terreno" : "grassy hills, swamps, forests, mountains",
+    "apariacoes" : 4
+}
+
+/* 9 */
+{
+    "_id" : ObjectId("5ad8d07a3a9641105415fa22"),
+    "nome" : "Coruscant",
+    "clima" : "temperate",
+    "terreno" : "cityscape, mountains",
+    "apariacoes" : 4
+}
+
+/* 10 */
+{
+    "_id" : ObjectId("5ad8d07c3a9641105415fa23"),
+    "nome" : "Kamino",
+    "clima" : "temperate",
+    "terreno" : "ocean",
+    "apariacoes" : 1
+}
+
+/* 11 */
+{
+    "_id" : ObjectId("5ad8dd6f3a96411370624191"),
+    "nome" : "Stewjon",
+    "clima" : "temperate",
+    "terreno" : "grasslands, mountains",
+    "apariacoes" : 0
+}
+
+/* 12 */
+{
+    "_id" : ObjectId("5ad8facb3a9641188cc755f9"),
+    "nome" : "Ord Mantell",
+    "clima" : "temperate",
+    "terreno" : "grasslands, mountains",
+    "apariacoes" : 0
+}
+
+/* 13 */
+{
+    "_id" : ObjectId("5ad8fe0b3a96411d382d0372"),
+    "nome" : "Trandosha",
+    "clima" : "temperate",
+    "terreno" : "grasslands, mountains",
+    "apariacoes" : 0
+}
