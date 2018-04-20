@@ -1,3 +1,7 @@
+/*
+ * @author               Tiago Brito
+ * @Date                 19/04/2018
+ */
 package br.com.b2w;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +18,30 @@ import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
 import br.com.b2w.helper.InicializaDB;
 import br.com.b2w.repository.PlanetaRepository;
-
+ 
 @SpringBootApplication
 public class Application {
 	
-	@Autowired
-	private InicializaDB inicializaDB;
-
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
+    /**
+     * Mongo template.
+     *
+     * @param mongoDbFactory the mongo db factory
+     * @param context the context
+     * @return the mongo template
+     */
+    
+     @Autowired
+	 private InicializaDB inicializaDB;
+    
     @Bean
     CommandLineRunner init(PlanetaRepository repository) {
 
@@ -32,12 +49,12 @@ public class Application {
 
         	repository.deleteAll();
         	 
-        	inicializaDB.popuparPlaneta(repository);
+        	inicializaDB.popuparPlaneta(repository,5);
 
         };
 
     }
- 
+  
     @Bean
     public MongoTemplate mongoTemplate(MongoDbFactory mongoDbFactory,
                                        MongoMappingContext context) {

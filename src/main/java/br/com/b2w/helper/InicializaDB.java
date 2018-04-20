@@ -11,20 +11,32 @@ import org.springframework.stereotype.Component;
 import br.com.b2w.domain.Planeta;
 import br.com.b2w.repository.PlanetaRepository;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InicializaDB.
+ */
 @Component
 public class InicializaDB {
 
+	/** The log. */
 	private final Logger LOG = LoggerFactory.getLogger(InicializaDB.class);
 
+	/** The helper. */
 	@Autowired
 	private Helper helper;
 
-	public void popuparPlaneta(PlanetaRepository domainRepository) {
+	/**
+	 * Popupar planeta.
+	 *
+	 * @param domainRepository the domain repository
+	 * @param limite the limite
+	 */
+	public void popuparPlaneta(PlanetaRepository domainRepository, int limite) {
 
 		try {
 			int qtd = 1;
 			Planeta planeta = null;
-			while (qtd <= 10) {
+			while (qtd <= limite) {
 
 				planeta = retornaPlaneta(helper.buscaPlanetaAPI(qtd));
 				
@@ -41,6 +53,12 @@ public class InicializaDB {
 		}
 	}
 
+	/**
+	 * Retorna planeta.
+	 *
+	 * @param map the map
+	 * @return the planeta
+	 */
 	private static Planeta retornaPlaneta(LinkedHashMap<?, ?> map) {
 		Planeta planeta = new Planeta();
 

@@ -17,14 +17,28 @@ import org.springframework.web.client.RestTemplate;
 
 import br.com.b2w.dto.MensagemDTO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Helper.
+ */
 @Component
 public class Helper {
  
+	/** The log. */
 	private final Logger LOG = LoggerFactory.getLogger(Helper.class);
 
+	/** The Constant URL_BY_ID. */
 	private final static String URL_BY_ID = "https://swapi.co/api/planets/";
+	
+	/** The Constant URL_BY_NAME. */
 	private final static String URL_BY_NAME = "https://swapi.co/api/planets/?search=";
 
+	/**
+	 * Busca planeta API.
+	 *
+	 * @param value the value
+	 * @return the linked hash map
+	 */
 	public LinkedHashMap<?, ?> buscaPlanetaAPI(Object value) {
  		
 		String url = URL_BY_ID;
@@ -43,6 +57,12 @@ public class Helper {
 		return (LinkedHashMap<?, ?>) someObject.getBody();
 	}
 
+	/**
+	 * Retorna qdt apariacoes.
+	 *
+	 * @param value the value
+	 * @return the int
+	 */
 	public int retornaQdtApariacoes(Object value) {
 		try{
 			LinkedHashMap<?, ?> hasMap= this.buscaPlanetaAPI(value);
@@ -64,6 +84,12 @@ public class Helper {
 
 	}
 	
+	/**
+	 * Convert to map.
+	 *
+	 * @param value the value
+	 * @return the map
+	 */
 	private Map<String,String> convertToMap(String value){
 	 	value = value.substring(1, value.length()-1);            
 		String[] keyValuePairs = value.split(",");              
@@ -85,6 +111,11 @@ public class Helper {
 		return map;
 	}
 	
+	/**
+	 * Retorna msg erro.
+	 *
+	 * @return the mensagem DTO
+	 */
 	public MensagemDTO retornaMsgErro() {
 		MensagemDTO dto = new MensagemDTO();
 		dto.setCodigo("Error");

@@ -3,7 +3,6 @@ package br.com.b2w.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +22,31 @@ import br.com.b2w.domain.Planeta;
 import br.com.b2w.helper.Helper;
 import br.com.b2w.repository.PlanetaRepository;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PlanetaController.
+ */
 @Controller
 @RequestMapping("/planetas")
 public class PlanetaController {
 	
+	/** The log. */
 	private final Logger LOG = LoggerFactory.getLogger(Helper.class);
 
+	/** The repository. */
 	@Autowired
 	private PlanetaRepository repository;
+	
+	/** The helper. */
 	@Autowired
 	private Helper helper;
 
+	/**
+	 * Listar.
+	 *
+	 * @param nome the nome
+	 * @return the response entity
+	 */
 	@RequestMapping
 	@ResponseBody
 	public ResponseEntity<?> listar(@Param("nome")String nome) {
@@ -47,9 +60,15 @@ public class PlanetaController {
 	}
 
 	
+	/**
+	 * Busca por id.
+	 *
+	 * @param id the id
+	 * @return the response entity
+	 */
 	@RequestMapping("/{id}")
 	@ResponseBody
-	public ResponseEntity<?> buscaPorId(@PathVariable("id") ObjectId id) {
+	public ResponseEntity<?> buscaPorId(@PathVariable("id") String  id) {
 		Optional<Planeta> planeta= repository.findById(id);
 		if(planeta!=null){
 			return new ResponseEntity<Object>(planeta, HttpStatus.OK);
@@ -59,6 +78,12 @@ public class PlanetaController {
 		}
 	}
 
+	/**
+	 * Save.
+	 *
+	 * @param planeta the planeta
+	 * @return the response entity
+	 */
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody Planeta planeta) {
 		
@@ -66,26 +91,22 @@ public class PlanetaController {
 			int qtd = helper.retornaQdtApariacoes(planeta.getNome());
 			planeta.setApariacoes(qtd);
 			planeta= repository.save(planeta);
-			return new ResponseEntity<Planeta>(planeta, HttpStatus.OK);
+			return new ResponseEntity<Planeta>(planeta, HttpStatus.CREATED);
 
 		}catch(org.springframework.dao.DuplicateKeyException e){
 			LOG.error("Erro ao salvar planeta: " + e.getMessage());
  			return new ResponseEntity<Object>(helper.retornaMsgErro(), HttpStatus.CONFLICT);
-
-
 		}catch(Exception e){
-			
-			LOG.error("Erro ao salvar planeta: " + e.getMessage());
+			 LOG.error("Erro ao salvar planeta: " + e.getMessage());
 			return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
-
 		}
-		
-
 	}
 
-
-	
-	
+	/**
+	 * Delete.
+	 *
+	 * @param id the id
+	 */
 	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
 	@ResponseBody
 	public void delete(@PathVariable("id") Planeta id) {
@@ -93,6 +114,11 @@ public class PlanetaController {
 	}
 	
 
+	/**
+	 * Find all.
+	 *
+	 * @return the response entity
+	 */
 	private ResponseEntity<?> findAll() {
 		List<Planeta> lista=repository.findAll();
 		if(CollectionUtils.isEmpty(lista)){
@@ -104,6 +130,12 @@ public class PlanetaController {
 		}
 	}
 
+	/**
+	 * Busca por nome.
+	 *
+	 * @param nome the nome
+	 * @return the response entity
+	 */
 	private ResponseEntity<?> buscaPorNome(String nome) {
 		Planeta planeta = repository.buscaPorNome(nome);
 		if(planeta!=null){
