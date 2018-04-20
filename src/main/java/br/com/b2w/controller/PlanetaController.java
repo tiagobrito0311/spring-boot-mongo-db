@@ -64,7 +64,7 @@ public class PlanetaController {
 	 *            the nome
 	 * @return the response entity
 	 */
-	@RequestMapping
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<?> listar(@Param("nome") String nome) {
 
 		if (!StringUtils.isEmpty(nome)) {
@@ -82,7 +82,7 @@ public class PlanetaController {
 	 *            the id
 	 * @return the response entity
 	 */
-	@RequestMapping("/{id}")
+	@RequestMapping(value="/{id}",method = RequestMethod.GET)
 	public ResponseEntity<?> buscaPorId(@PathVariable("id") String id) {
 		Optional<Planeta> planeta = repository.findById(id);
 		if (planeta != null) {
@@ -115,14 +115,10 @@ public class PlanetaController {
 	}catch(	PlanetasException str){ 
  		  return new ResponseEntity<>( str.getMessage(), HttpStatus.BAD_REQUEST);
 		 
-	}catch(
-	org.springframework.dao.DuplicateKeyException e)
-	{
+	}catch(org.springframework.dao.DuplicateKeyException e){
 			LOG.error("Erro ao salvar planeta: " + e.getMessage());
  			return new ResponseEntity<Object>(helper.retornaMsgErro(), HttpStatus.CONFLICT);
-		}catch(
-	Exception e)
-	{
+	 }catch( Exception e) {
 		LOG.error("Erro ao salvar planeta: " + e.getMessage());
 		return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
@@ -135,8 +131,10 @@ public class PlanetaController {
 	 *            the id
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") Planeta id) {
-		repository.delete(id);
+	public ResponseEntity<?> delete(@PathVariable("id") String id) {
+		repository.deleteById(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
 	}
 
 	/**

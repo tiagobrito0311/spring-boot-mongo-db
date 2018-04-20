@@ -1,7 +1,8 @@
 /**
  * @author               Tiago Brito
- * @Date                 {date}
+ * @Date                 20/04/2018
  */
+ 
  
 package br.com.b2w;
 
@@ -30,14 +31,15 @@ import br.com.b2w.domain.Planeta;
 import br.com.b2w.helper.InicializaDB;
 import br.com.b2w.repository.PlanetaRepository;
 
+ 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AppTest.
+ * The Class PlanetaControllerTest.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = { "spring.data.mongodb.database=test_db" }, webEnvironment = WebEnvironment.RANDOM_PORT)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class AppTest {
+public class PlanetaControllerTest {
 
 	/** The Constant HOST. */
 	private static final String HOST = "http://localhost:";
@@ -137,7 +139,7 @@ public class AppTest {
 
 		LinkedHashMap<?, ?> pla = (LinkedHashMap<?, ?>) response.getBody();
 		idPlaneta = pla.get("id").toString();
-		assertThat(response.getStatusCode(), is(HttpStatus.OK));
+		assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
 
 	}
 
@@ -160,7 +162,7 @@ public class AppTest {
 	@Test
 	public void buscarPlanetaPorNome() throws Exception {
 
-		ResponseEntity<?> response = this.restTemplate.getForEntity(HOST + port + RECURSO + "?nome=Dagobah",
+		ResponseEntity<?> response = this.restTemplate.getForEntity(HOST + port + RECURSO + "?nome=Tatooine",
 				Object.class);
 		assertThat(response.getStatusCode(), is(HttpStatus.OK));
 

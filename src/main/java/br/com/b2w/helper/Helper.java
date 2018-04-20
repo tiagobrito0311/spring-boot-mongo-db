@@ -70,9 +70,15 @@ public class Helper {
 	public int retornaQdtApariacoes(Object value) {
 		try{
 			LinkedHashMap<?, ?> hasMap= this.buscaPlanetaAPI(value);
-			String ob = hasMap.get("results").toString();
-			Map<String,String> map = convertToMap(ob);
-			 String str = map.get("films");
+			String str = null;
+			if(hasMap.get("results")!=null){
+				String ob = hasMap.get("results").toString();
+				Map<String,String> map = convertToMap(ob);
+				 str = map.get("films");
+			}else{
+				 str = hasMap.get("films").toString();
+			}
+			
 			 if(str.length()<=2){
 				 return 0;
 			 }

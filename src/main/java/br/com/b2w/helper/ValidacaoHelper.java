@@ -33,7 +33,7 @@ public class ValidacaoHelper {
 	 * @param planeta the planeta
 	 * @return the list
 	 */
-	public List<MensagemDTO> validaPlaneta(Planeta planeta) throws PlanetasException{
+	public void validaPlaneta(Planeta planeta) throws PlanetasException{
 		List<MensagemDTO> listaErro = null;
 		MensagemDTO dto = null;
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -54,8 +54,7 @@ public class ValidacaoHelper {
 		if(listaErro!=null){
 			throw new PlanetasException(listaErro.toString());
 		}
-		return listaErro;
-		
+ 			
 	}
 
 }
