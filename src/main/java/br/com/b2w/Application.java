@@ -1,11 +1,10 @@
-/*
+/**
  * @author               Tiago Brito
- * @Date                 19/04/2018
+ * @Date                 20/04/2018
  */
+ 
 package br.com.b2w;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -15,10 +14,11 @@ import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
 import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
-
-import br.com.b2w.helper.InicializaDB;
-import br.com.b2w.repository.PlanetaRepository;
  
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Application.
+ */
 @SpringBootApplication
 public class Application {
 	
@@ -39,7 +39,9 @@ public class Application {
      * @return the mongo template
      */
     
-     @Autowired
+     /* 
+      * 
+      * @Autowired
 	 private InicializaDB inicializaDB;
     
     @Bean
@@ -54,7 +56,7 @@ public class Application {
         };
 
     }
-  
+//  */
     @Bean
     public MongoTemplate mongoTemplate(MongoDbFactory mongoDbFactory,
                                        MongoMappingContext context) {

@@ -1,3 +1,8 @@
+/**
+ * @author               Tiago Brito
+ * @Date                 {date}
+ */
+ 
 package br.com.b2w;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -84,6 +89,21 @@ public class AppTest {
 		assertThat(controller).isNotNull();
 	}
 
+	
+	/**
+	 * Adicionar planeta com erro.
+	 *
+	 * @throws Exception the exception
+	 */
+	@Test
+	public void adicionarPlanetaComErro() throws Exception {
+		Planeta planeta = new Planeta();
+		
+		ResponseEntity<?> response = this.restTemplate.postForEntity(HOST + port + RECURSO, planeta, Object.class);
+		assertThat(response.getStatusCode(), is(HttpStatus.BAD_REQUEST));
+
+	}
+	
 	/**
 	 * Adicionar planeta ja cadastrado.
 	 *
@@ -100,7 +120,7 @@ public class AppTest {
 		assertThat(response.getStatusCode(), is(HttpStatus.CONFLICT));
 
 	}
-
+	
 	/**
 	 * Adicionar planeta.
 	 *

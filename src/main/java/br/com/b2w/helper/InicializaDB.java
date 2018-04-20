@@ -1,3 +1,7 @@
+/**
+ * @author               Tiago Brito
+ * @Date                 20/04/2018
+ */
 package br.com.b2w.helper;
 
 import java.util.ArrayList;

@@ -1,3 +1,7 @@
+/**
+ * @author               Tiago Brito
+ * @Date                 {date}
+ */
 package br.com.b2w.dto;
 
 // TODO: Auto-generated Javadoc
@@ -46,6 +50,14 @@ public class MensagemDTO {
 	 */
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "{\"codigo\":\"" + codigo + "\", \"mensagem\":\"" + mensagem + "\"}";
 	}
 	
 	

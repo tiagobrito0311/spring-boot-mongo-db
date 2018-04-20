@@ -1,6 +1,13 @@
+/**
+ * @author               Tiago Brito
+ * @Date                 20/04/2018
+ */
+ 
 package br.com.b2w.domain;
 
 import java.io.Serializable;
+
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -13,21 +20,25 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "planeta")
 public class Planeta implements Serializable{
  
-	/** The Constant serialVersionUID. */
+		/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
+	private static final String MSG_NOT_BLANK="O campo não pode ser nulo ou vazio.";
 	/** The id. */
 	@Id
     private String   id;
     
     /** The nome. */
     @Indexed(unique = true)
+    @NotBlank(message = MSG_NOT_BLANK)
     private String nome;
     
     /** The clima. */
+    @NotBlank(message = MSG_NOT_BLANK)
     private String clima;
     
     /** The terreno. */
+    @NotBlank(message = MSG_NOT_BLANK)
     private String terreno;
     
     /** The apariacoes. */

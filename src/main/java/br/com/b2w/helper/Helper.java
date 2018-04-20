@@ -1,3 +1,7 @@
+/**
+ * @author               Tiago Brito
+ * @Date                 20/04/2018
+ */
 package br.com.b2w.helper;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -90,7 +94,7 @@ public class Helper {
 	 * @param value the value
 	 * @return the map
 	 */
-	private Map<String,String> convertToMap(String value){
+	public Map<String,String> convertToMap(String value){
 	 	value = value.substring(1, value.length()-1);            
 		String[] keyValuePairs = value.split(",");              
 		String lastKey=null;
