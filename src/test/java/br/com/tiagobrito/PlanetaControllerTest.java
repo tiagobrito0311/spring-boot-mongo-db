@@ -4,7 +4,7 @@
  */
  
  
-package br.com.b2w;
+package br.com.tiagobrito;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
@@ -26,10 +26,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.b2w.controller.PlanetaController;
-import br.com.b2w.domain.Planeta;
-import br.com.b2w.helper.InicializaDB;
-import br.com.b2w.repository.PlanetaRepository;
+import br.com.tiagobrito.config.InicializaDB;
+import br.com.tiagobrito.controller.PlanetaController;
+import br.com.tiagobrito.domain.Planeta;
+import br.com.tiagobrito.repository.PlanetaRepository;
 
  
 // TODO: Auto-generated Javadoc

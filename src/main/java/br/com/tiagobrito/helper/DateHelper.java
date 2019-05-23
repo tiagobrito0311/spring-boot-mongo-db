@@ -3,7 +3,7 @@
  * @Date                 20/04/2018
  */
 
-package br.com.b2w.helper;
+package br.com.tiagobrito.helper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,10 +22,7 @@ public class DateHelper {
 	/** The Constant LC_BRAZIL. */
 	static final Locale LC_BRAZIL = new Locale("pt", "BR");
 
-
-	/** The Constant dateFormat. */
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE_2,LC_BRAZIL);
-
+ 
 	/**
 	 * Retorna data formatada.
 	 *
@@ -34,6 +31,6 @@ public class DateHelper {
 	 */
 	public static String retornaDataFormatada(Date date){
 		
-		return dateFormat.format(date);
+		return new SimpleDateFormat(FORMAT_DATE_2,LC_BRAZIL).format(date);
 	}
 }

@@ -2,7 +2,7 @@
  * @author               Tiago Brito
  * @Date                 {date}
  */
-package br.com.b2w.dto;
+package br.com.tiagobrito.dto;
 
 // TODO: Auto-generated Javadoc
 /**

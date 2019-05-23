@@ -2,9 +2,8 @@
  * @author               Tiago Brito
  * @Date                 20/04/2018
  */
- 
- 
-package br.com.b2w.controller;
+
+package br.com.tiagobrito.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,13 +23,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.com.b2w.domain.Planeta;
-import br.com.b2w.exception.PlanetasException;
-import br.com.b2w.helper.Helper;
-import br.com.b2w.helper.ValidacaoHelper;
-import br.com.b2w.repository.PlanetaRepository;
- 
- 
+import br.com.tiagobrito.domain.Planeta;
+import br.com.tiagobrito.exception.PlanetasException;
+import br.com.tiagobrito.helper.Helper;
+import br.com.tiagobrito.repository.PlanetaRepository;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class PlanetaController.
@@ -41,10 +38,10 @@ public class PlanetaController {
 
 	/** The log. */
 	private final Logger LOG = LoggerFactory.getLogger(Helper.class);
-	
+
 	/** The Constant TYPE_JSON. */
-	private static final String TYPE_JSON="application/json";
-	
+	private static final String TYPE_JSON = "application/json";
+
 	/** The repository. */
 	@Autowired
 	private PlanetaRepository repository;
@@ -53,15 +50,11 @@ public class PlanetaController {
 	@Autowired
 	private Helper helper;
 
-	/** The validation. */
-	@Autowired
-	private ValidacaoHelper validation;
 
 	/**
 	 * Listar.
 	 *
-	 * @param nome
-	 *            the nome
+	 * @param nome the nome
 	 * @return the response entity
 	 */
 	@RequestMapping(method = RequestMethod.GET)
@@ -78,11 +71,10 @@ public class PlanetaController {
 	/**
 	 * Busca por id.
 	 *
-	 * @param id
-	 *            the id
+	 * @param id the id
 	 * @return the response entity
 	 */
-	@RequestMapping(value="/{id}",method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> buscaPorId(@PathVariable("id") String id) {
 		Optional<Planeta> planeta = repository.findById(id);
 		if (planeta != null) {
@@ -100,40 +92,35 @@ public class PlanetaController {
 	 * @return the response entity
 	 * @throws JSONException the JSON exception
 	 */
-	@RequestMapping(method = RequestMethod.POST, consumes = TYPE_JSON ,produces=TYPE_JSON )
+	@RequestMapping(method = RequestMethod.POST, consumes = TYPE_JSON, produces = TYPE_JSON)
 	public ResponseEntity<?> save(@RequestBody Planeta planeta) throws JSONException {
-		
-		try{ 
-			validation.validaPlaneta(planeta);
-			
-			int qtd = helper.retornaQdtApariacoes(planeta.getNome());
-			planeta.setApariacoes(qtd);
-			planeta= repository.save(planeta);
+
+		try {
+			planeta = repository.save(helper.retornaPlaneta(planeta));
+
 			return new ResponseEntity<Planeta>(planeta, HttpStatus.CREATED);
 
-		 
-	}catch(	PlanetasException str){ 
- 		  return new ResponseEntity<>( str.getMessage(), HttpStatus.BAD_REQUEST);
-		 
-	}catch(org.springframework.dao.DuplicateKeyException e){
+		} catch (PlanetasException str) {
+			return new ResponseEntity<>(str.getMessage(), HttpStatus.BAD_REQUEST);
+
+		} catch (org.springframework.dao.DuplicateKeyException e) {
 			LOG.error("Erro ao salvar planeta: " + e.getMessage());
- 			return new ResponseEntity<Object>(helper.retornaMsgErro(), HttpStatus.CONFLICT);
-	 }catch( Exception e) {
-		LOG.error("Erro ao salvar planeta: " + e.getMessage());
-		return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
+			return new ResponseEntity<Object>(helper.retornaMsgErro(), HttpStatus.CONFLICT);
+		} catch (Exception e) {
+			LOG.error("Erro ao salvar planeta: " + e.getMessage());
+			return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	/**
 	 * Delete.
 	 *
-	 * @param id
-	 *            the id
+	 * @param id the id
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> delete(@PathVariable("id") String id) {
 		repository.deleteById(id);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.OK);
 
 	}
 
@@ -156,8 +143,7 @@ public class PlanetaController {
 	/**
 	 * Busca por nome.
 	 *
-	 * @param nome
-	 *            the nome
+	 * @param nome the nome
 	 * @return the response entity
 	 */
 	private ResponseEntity<?> buscaPorNome(String nome) {
@@ -169,14 +155,12 @@ public class PlanetaController {
 
 		}
 	}
-	
-	
+
 	/**
 	 * Valida planeta.
 	 *
 	 * @param planeta the planeta
 	 * @throws PlanetasException the planetas exception
 	 */
-	 
 
 }

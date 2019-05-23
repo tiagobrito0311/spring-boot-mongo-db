@@ -3,7 +3,7 @@
  * @Date                 20/04/2018
  */
  
-package br.com.b2w.domain;
+package br.com.tiagobrito.domain;
 
 import java.io.Serializable;
 

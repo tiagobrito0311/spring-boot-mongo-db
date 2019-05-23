@@ -2,7 +2,7 @@
  * @author               Tiago Brito
  * @Date                 20/04/2018
  */
-package br.com.b2w;
+package br.com.tiagobrito;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.b2w.domain.Planeta;
-import br.com.b2w.exception.PlanetasException;
-import br.com.b2w.helper.ValidacaoHelper;
+import br.com.tiagobrito.domain.Planeta;
+import br.com.tiagobrito.exception.PlanetasException;
+import br.com.tiagobrito.helper.ValidacaoHelper;
 
 // TODO: Auto-generated Javadoc
 /**

@@ -2,7 +2,7 @@
  * @author               Tiago Brito
  * @Date                 20/04/2018
  */
-package br.com.b2w.helper;
+package br.com.tiagobrito.helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +15,9 @@ import javax.validation.ValidatorFactory;
 
 import org.springframework.stereotype.Component;
 
-import br.com.b2w.domain.Planeta;
-import br.com.b2w.dto.MensagemDTO;
-import br.com.b2w.exception.PlanetasException;
+import br.com.tiagobrito.domain.Planeta;
+import br.com.tiagobrito.dto.MensagemDTO;
+import br.com.tiagobrito.exception.PlanetasException;
 
 // TODO: Auto-generated Javadoc
 /**

@@ -1,11 +1,11 @@
-package br.com.b2w.repository;
+package br.com.tiagobrito.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import br.com.b2w.domain.Planeta;
+import br.com.tiagobrito.domain.Planeta;
 
 // TODO: Auto-generated Javadoc
 /**

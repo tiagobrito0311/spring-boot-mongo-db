@@ -2,18 +2,17 @@
  * @author               Tiago Brito
  * @Date                 20/04/2018
  */
-package br.com.b2w.helper;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+package br.com.tiagobrito.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.b2w.domain.Planeta;
-import br.com.b2w.repository.PlanetaRepository;
+import br.com.tiagobrito.domain.Planeta;
+import br.com.tiagobrito.dto.ResultDTO;
+import br.com.tiagobrito.helper.Helper;
+import br.com.tiagobrito.repository.PlanetaRepository;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -63,24 +62,13 @@ public class InicializaDB {
 	 * @param map the map
 	 * @return the planeta
 	 */
-	private static Planeta retornaPlaneta(LinkedHashMap<?, ?> map) {
+	private static Planeta retornaPlaneta(ResultDTO  request) {
 		Planeta planeta = new Planeta();
-
-		map.forEach((key, value) -> {
-
-			if (key.equals("name")) {
-				planeta.setNome(value.toString());
-			} else if (key.equals("climate")) {
-				planeta.setClima(value.toString());
-			} else if (key.equals("terrain")) {
-				planeta.setTerreno(value.toString());
-			} else if (key.equals("films")) {
-				ArrayList<?> ob = (ArrayList<?>) value;
-				planeta.setApariacoes(ob.size());
-
-			}
-		});
-
+		planeta.setNome(request.getResults().get(0).getName());
+		planeta.setClima(request.getResults().get(0).getClimate());
+		planeta.setTerreno(request.getResults().get(0).getTerrain());
+		planeta.setApariacoes(request.getResults().get(0).getFilms().size());
+ 
 		return planeta;
 	}
 
